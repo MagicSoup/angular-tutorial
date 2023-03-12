@@ -1,13 +1,14 @@
 import {waitForAsync} from "@angular/core/testing";
+
 import {fireEvent, getNodeText, render, screen, waitFor} from '@testing-library/angular';
 
 import {MaterialModule} from './material.module';
 import {SecurityService} from './security/security.service';
 
-import {AppComponent} from './app.component';
-
-import {of} from "rxjs";
 import {Observable} from "rxjs/internal/Observable";
+import {of} from "rxjs";
+
+import {AppComponent} from './app.component';
 
 // mock security service
 const securityServiceFactory = (mock: () => Observable<string[]>) => {
@@ -15,7 +16,6 @@ const securityServiceFactory = (mock: () => Observable<string[]>) => {
   jest.spyOn(securityService, 'getAllRoles').mockImplementation(mock);
   return securityService;
 }
-
 describe('AppComponent', () => {
 
   beforeEach(waitForAsync(() => {
